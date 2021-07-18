@@ -45,6 +45,11 @@ class Bartop extends Component{
         this.props.tabHandler(index);
         this.setState({dropDownState: 0});
     }
+
+    SignOutHandler = () => {
+        localStorage.removeItem('user');
+        window.location = this.props.routes.signPage;
+    }
     
     render(){
         return(
@@ -59,7 +64,7 @@ class Bartop extends Component{
                     </IconButton>
                     <div class={this.state.dropDownClasses[this.state.dropDownState]}>
                         <div id='userNameContainer'>
-                            <p id='userName'>William</p>
+                            <p id='userName'>{JSON.parse(localStorage.getItem('user')).username}</p>
                         </div>
                         <div onClick={() => this.DropdownClick(1)} className='dropdownItem'>
                             <p>Settings</p>
@@ -67,7 +72,7 @@ class Bartop extends Component{
                         <div className='dropdownItem'>
                             <p>About</p>
                         </div>
-                        <div className='dropdownItem'>
+                        <div onClick={() => this.SignOutHandler()} className='dropdownItem'>
                             <p>Sign Out</p>
                         </div>
                     </div>

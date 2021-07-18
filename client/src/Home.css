@@ -59,3 +59,13 @@
     margin-top: 20px;
     transition: all 0.1s;
 }
+
+#ResetText{
+    margin-top: 10px;
+    color: #1d63dc;
+    cursor: pointer;
+}
+
+#ResetText:hover{
+    text-decoration: underline;
+}

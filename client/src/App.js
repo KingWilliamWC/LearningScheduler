@@ -13,7 +13,7 @@ class App extends Component{
         super(props);
 
         this.state = {
-            Tabs: [<Home />, <Settings tabHandler={this.HandleTabChange}/>],
+            Tabs: [<Home routes={this.props.routes}/>, <Settings routes={this.props.routes} tabHandler={this.HandleTabChange}/>],
             TabState: 0,
         }
     }
@@ -26,7 +26,7 @@ class App extends Component{
     render(){
         return(
             <div>
-                <Bartop tabHandler={this.HandleTabChange}/>
+                <Bartop routes={this.props.routes} tabHandler={this.HandleTabChange}/>
                 {this.state.Tabs[this.state.TabState]}
             </div>
         )

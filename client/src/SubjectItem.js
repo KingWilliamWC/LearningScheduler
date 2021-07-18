@@ -10,7 +10,7 @@ class SubjectItem extends Component {
             <Paper style={{height: 50}} elevation={1}>
                 <div className='subjectContainer'>
                     <p className='subjectName'>{this.props.name}</p>
-                    <img onClick={() => this.props.deleteHandler(this.props.index)} className='subjectDeleteIcon' src={DeleteSVG}></img>
+                    <img alt='' onClick={() => this.props.deleteHandler(this.props.index)} className='subjectDeleteIcon' src={DeleteSVG}></img>
                 </div>
             </Paper>
         )

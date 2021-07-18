@@ -5,7 +5,16 @@
 .tabTitle{
     font-family: RobotoMedium;
     font-size: 25px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+}
+
+
+.hide{
+    display: none;
+}
+
+.errorText{
+    color: #fe2020;
 }
 
 #backContainer{
