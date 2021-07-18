@@ -17,11 +17,12 @@ app.set('view engine', 'html');
 // app.use(logger('dev'));
 app.use(compression());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.options('*', cors())
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/', frontRouter);
 app.use('/api', apiRouter);

@@ -9,14 +9,14 @@ import Register from './Register';
 
 class AppRouter extends Component{
     render(){
-        var urlBase = 'https://localhost'
+        var urlBase = 'https://52.151.90.27'
         var routes = {
             'signin': `${urlBase}/api/signin`,
             'signup': `${urlBase}/api/signup`,
-            'signPage': `https://localhost/`,
+            'signPage': `https://52.151.90.27/`,
             'user': `${urlBase}/api/user`,
             'updateaccount': `${urlBase}/api/updateaccount`,
-            'app': `https://localhost/app`,
+            'app': `https://52.151.90.27/app`,
         }
         
         return(
