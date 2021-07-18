@@ -1,0 +1,97 @@
+#settingsTabContainer{
+    text-align: center;
+}
+
+.tabTitle{
+    font-family: RobotoMedium;
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+
+#backContainer{
+    position: absolute;
+    left: 10%;
+    top: 12%;
+}
+
+#backIcon{
+    width: 15px;
+    cursor: pointer;
+    height: auto;
+    transition: all 0.1s;
+}
+
+#backIcon:hover{
+    filter: invert(29%) sepia(98%) saturate(2020%) hue-rotate(210deg) brightness(87%) contrast(97%);
+}
+
+.subSettingsTitle{
+    font-size: 25px;
+    margin-bottom: 35px;
+}
+
+.subSettingsTitleBottom{
+    margin-top: 50px;
+}
+
+#inputContainer{
+    display: flex;
+    width: 250px;
+    margin: 0 auto;
+    flex-direction: column;
+}
+#subjectsContainer{
+    width: 250px;
+    margin: 0 auto;
+}
+
+.subjectContainer{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.subjectName{
+    text-align: left;
+}
+
+.addGenreInputContainerHide{
+    display: none;
+}
+
+.addGenreInputContainer{
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
+}
+
+.subjectDeleteIcon{
+    width: 50px;
+    height: 35%;
+    cursor: pointer;
+    filter: invert(58%) sepia(6%) saturate(1594%) hue-rotate(202deg) brightness(88%) contrast(84%);
+    margin-left: auto;
+    transition: all 0.1s;
+}
+
+.subjectDeleteIcon:hover{
+    filter: invert(24%) sepia(79%) saturate(5812%) hue-rotate(351deg) brightness(102%) contrast(100%);
+}
+
+#addGenreBtn{
+    width: 20px;
+    cursor: pointer;
+    transition: all 0.1s;
+    filter: invert(58%) sepia(6%) saturate(1594%) hue-rotate(202deg) brightness(88%) contrast(84%);
+    height: auto;
+    margin-top: 20px;
+}
+
+#addGenreBtn:hover{
+    filter: invert(29%) sepia(98%) saturate(2020%) hue-rotate(210deg) brightness(87%) contrast(97%);
+}
+
+#addContainer{
+    position: relative;
+}

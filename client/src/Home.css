@@ -1,0 +1,61 @@
+#homeContainer{
+    text-align: center;
+}
+
+#titleContainer{
+    margin-bottom: 80px;
+}
+
+#mainWelcomeTitle{
+    font-family: RobotoMedium;
+    font-size: 35px;
+}
+
+#mainSubTitle{
+    color: rgba(128, 128, 128, 0.755);
+}
+
+#genreText{
+    font-size: 50px;
+    font-family: RobotoBold;
+    color: #1d63dc;
+    margin-bottom: 20px;
+}
+
+#playIcon{
+    width: 50px;
+    height: 50px;
+    filter: invert(30%) sepia(97%) saturate(2158%) hue-rotate(210deg) brightness(88%) contrast(96%);
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#playIcon img {
+    position: absolute;
+    width:  50%;
+}
+
+#buttonFull{
+    height: auto;
+    transition: opacity 1s;
+}
+
+.iconShow{
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.iconHide{
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+#TimeCounterText{
+    font-family: RobotoBold;
+    color: #1d63dc;
+    font-size: 50px;
+    margin-top: 20px;
+    transition: all 0.1s;
+}

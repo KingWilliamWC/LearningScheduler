@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+
+// page structure
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// component imports
+import Bartop from './Bartop';
+import Home from './Home';
+import Settings from './Settings';
+
+class App extends Component{
+    constructor(props){
+        super(props);
+
+        this.state = {
+            Tabs: [<Home />, <Settings tabHandler={this.HandleTabChange}/>],
+            TabState: 0,
+        }
+    }
+    
+    
+    HandleTabChange = (Tabindex) => {
+        this.setState({TabState: Tabindex});
+    }
+    
+    render(){
+        return(
+            <div>
+                <Bartop tabHandler={this.HandleTabChange}/>
+                {this.state.Tabs[this.state.TabState]}
+            </div>
+        )
+    }
 }
 
 export default App;
