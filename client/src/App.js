@@ -18,7 +18,6 @@ class App extends Component{
         }
     }
     
-    
     HandleTabChange = (Tabindex) => {
         this.setState({TabState: Tabindex});
     }

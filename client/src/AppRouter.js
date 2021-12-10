@@ -13,10 +13,10 @@ class AppRouter extends Component{
         var routes = {
             'signin': `${urlBase}/api/signin`,
             'signup': `${urlBase}/api/signup`,
-            'signPage': `https://52.151.90.27/`,
+            'signPage': `https://52.151.90.27`,
             'user': `${urlBase}/api/user`,
             'updateaccount': `${urlBase}/api/updateaccount`,
-            'app': `https://52.151.90.27/app`,
+            'app': `${urlBase}/app`,
         }
         
         return(

@@ -13,22 +13,26 @@ class Bartop extends Component{
             dropDownClasses: ['dropdown-content-hide ', 'dropdown-content-hide dropdown-content'],
             dropDownState: 0,
             time: new Date(),
+            userName: '',
         }
     }
 
     componentDidMount(){
-        this.clockUpdate = setInterval(
-            () => this.updateClock(), 1000
-        )
-
-        const ProfileContainer = document.getElementsByClassName('userProfileContainer')[0]
-        document.addEventListener("mousedown", (event) => {
-            if(!ProfileContainer.contains(event.target)){
-                if(this.state.dropDownState === 1){
-                    this.setState({dropDownState: 0});
+        if(localStorage.getItem('user')){
+            this.setState({userName: JSON.parse(localStorage.getItem('user')).username});
+            this.clockUpdate = setInterval(
+                () => this.updateClock(), 1000
+            )
+    
+            const ProfileContainer = document.getElementsByClassName('userProfileContainer')[0]
+            document.addEventListener("mousedown", (event) => {
+                if(!ProfileContainer.contains(event.target)){
+                    if(this.state.dropDownState === 1){
+                        this.setState({dropDownState: 0});
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
     updateClock = () => {
@@ -36,9 +40,7 @@ class Bartop extends Component{
     }
 
     onUserProfileClick = () => {
-        if(this.state.dropDownState === 0){
-            this.setState({dropDownState: 1})
-        }
+        this.state.dropDownState === 0 ? this.setState({dropDownState: 1}) : this.setState({dropDownState: 0});
     }
 
     DropdownClick = (index) => {
@@ -62,9 +64,9 @@ class Bartop extends Component{
                     <IconButton aria-label="delete">
                         <Avatar id='avatarImg'>WW</Avatar>
                     </IconButton>
-                    <div class={this.state.dropDownClasses[this.state.dropDownState]}>
+                    <div className={this.state.dropDownClasses[this.state.dropDownState]}>
                         <div id='userNameContainer'>
-                            <p id='userName'>{JSON.parse(localStorage.getItem('user')).username}</p>
+                            <p id='userName'>{this.state.userName}</p>
                         </div>
                         <div onClick={() => this.DropdownClick(1)} className='dropdownItem'>
                             <p>Settings</p>
@@ -77,7 +79,6 @@ class Bartop extends Component{
                         </div>
                     </div>
                 </div>
-
             </div>
         )
     }

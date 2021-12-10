@@ -37,36 +37,43 @@ class Register extends Component {
         this.setState({errorState: 1, errorMessage: message})
     }
 
-    userRegister = async() => {
-        var username =  document.getElementsByClassName('MuiInputBase-input')[0]
-        var password = document.getElementsByClassName('MuiInputBase-input')[1]
-        if(this.state.AccountSwitchState === 0){
-            // Sign in
-            await axios.post(this.props.routes.signin, {'username': username.value, 'password': password.value})
-            .then(res => {
-                if(res.data.error === false){
-                    localStorage.setItem('user', JSON.stringify(res.data.message));
-                    window.location = this.props.routes.app;
-                }else{
-                    this.error('Incorrect username or password')
-                }
-            })
-        }else{
-            // Sign Up
-            await axios.post(this.props.routes.signup, {'username': username.value, 'password': password.value})
-            .then(res => {
-                if(res.data.error === false){
-                    localStorage.setItem('user', JSON.stringify(res.data.message));
-                    window.location = this.props.routes.app;
-                }else{
-                    console.log(res.data)
-                    if(res.data.message === 'duplicate'){
-                        this.error('Username already exists');
-                    }
-                }
-            })
+    onUserInputKey = (e) => {
+        if(e.key === "Enter"){
+            this.userRegister();
         }
+    }
 
+    userRegister = async() => {
+        var username =  document.getElementsByClassName('MuiInputBase-input')[0].value
+        var password = document.getElementsByClassName('MuiInputBase-input')[1].value
+        if(username.length > 0 && password.length > 0){
+            if(this.state.AccountSwitchState === 0){
+                // Sign in
+                await axios.post(this.props.routes.signin, {'username': username, 'password': password})
+                .then(res => {
+                    if(res.data.error === false){
+                        localStorage.setItem('user', JSON.stringify(res.data.message));
+                        window.location = this.props.routes.app;
+                    }else{
+                        this.error('Incorrect username or password')
+                    }
+                })
+            }else{
+                // Sign Up
+                await axios.post(this.props.routes.signup, {'username': username, 'password': password})
+                .then(res => {
+                    if(res.data.error === false){
+                        localStorage.setItem('user', JSON.stringify(res.data.message));
+                        window.location = this.props.routes.app;
+                    }else{
+                        console.log(res.data)
+                        if(res.data.message === 'duplicate'){
+                            this.error('Username already exists');
+                        }
+                    }
+                })
+            }
+        }
     }
 
     render(){
@@ -79,8 +86,8 @@ class Register extends Component {
                     <p id={this.state.RegisterTitleIDs[this.state.errorState]}>{this.state.RegisterTitleText[this.state.AccountSwitchState]}</p>
                     <p className={this.state.errorClasses[this.state.errorState]}>{this.state.errorMessage}</p>
                     <div id='inputsContainer'>
-                        <TextField id="InputContainerUserName" label="Username" variant="outlined" />
-                        <TextField style={{marginTop: 20}} className="InputContainerPassword" type='Password' label="Password" variant="outlined" />
+                        <TextField onKeyDown={(e) => this.onUserInputKey(e)} id="InputContainerUserName" label="Username" variant="outlined" />
+                        <TextField onKeyDown={(e) => this.onUserInputKey(e)} style={{marginTop: 20}} className="InputContainerPassword" type='Password' label="Password" variant="outlined" />
                         <Button onClick={() => this.userRegister()} style={{color: 'white', backgroundColor: '#1d63dc', width: 125, margin: '20px auto'}} variant="contained">
                         {this.state.RegisterTitleText[this.state.AccountSwitchState]}
                         </Button>

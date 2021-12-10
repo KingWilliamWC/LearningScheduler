@@ -57,8 +57,13 @@ class Settings extends Component{
                 localStorage.setItem('user', JSON.stringify(res.data.message));
                 this.props.tabHandler(0)
             }
-
         })
+    }
+
+    onUserInputKey = (e) => {
+        if(e.key === "Enter"){
+            this.handleUserAdd();
+        }
     }
 
     userExit = async() =>{
@@ -129,7 +134,7 @@ class Settings extends Component{
                     {this.state.genresDisplay}
                     <div id='addContainer'>
                         <div className={this.state.addIDs[this.state.addState]}>
-                            <TextField style={{backgroundColor: 'white'}} label="Subject Name" defaultValue='' variant="outlined" />
+                            <TextField onKeyDown={(e) => this.onUserInputKey(e)} style={{backgroundColor: 'white'}} label="Subject Name" defaultValue='' variant="outlined" />
                         </div>
                         <img alt='' onClick={() => this.handleUserAdd()} id='addGenreBtn' src={PlusSVG}></img>
                     </div>
